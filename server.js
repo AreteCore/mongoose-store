@@ -2,6 +2,10 @@ const express = require("express")
 const mongoose = require("mongoose")
 const methodOverride = require('method-override')
 const app = express()
+
+//product schema
+const productController = require('./controllers/product')
+
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => console.log(`server listening on ${PORT}`))
 
@@ -27,3 +31,5 @@ db.on("disconnected", () => console.log("mongo disconnected"))
 app.use(express.urlencoded({extended:true}))
 //methodoverride, enables update and edit routes
 app.use(methodOverride("_method")
+//product schema middleware
+app.use('/products', productController)
