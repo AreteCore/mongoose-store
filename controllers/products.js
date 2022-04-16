@@ -8,8 +8,8 @@ const productRouter = express.Router()
 const Product = require("../models/product")
 const seed = require("../models/productseed")
 
-//seed data if you have itrsrs
-//const seed = require("./models/seedfile")
+//seed data if you have it
+const seed = require("./models/seedfile")
 
 // INDUCES - Index, New, Delete, Update, Create, Edit, Show
 //seed if you have it
