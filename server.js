@@ -4,13 +4,15 @@ const methodOverride = require('method-override')
 const app = express()
 
 //product schema
-const productController = require('./controllers/product')
+const productController = require('./controllers/products')
+
+//dotenv usage
+//MUST BE BEFORE PORT DECLARATION
+require("dotenv").config()
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => console.log(`server listening on ${PORT}`))
 
-//dotenv usage
-require("dotenv").config()
 
 //connect mongoose to DB via link in .env
 mongoose.connect(process.env.DATABASE_URL, {
@@ -22,7 +24,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 //mongoose connection status
 const db = mongoose.connection
-db.on("error", (err) => console.log(err.message + " is mongo not running?"))
+db.on("error", (err) => console.log(`mongo error! ${err.message}`))
 db.on("connected", () => console.log("mongo connected"))
 db.on("disconnected", () => console.log("mongo disconnected"))
 
@@ -30,6 +32,7 @@ db.on("disconnected", () => console.log("mongo disconnected"))
 //body parser middleware, gives us access to req.body
 app.use(express.urlencoded({extended:true}))
 //methodoverride, enables update and edit routes
-app.use(methodOverride("_method")
+app.use(methodOverride("_method"))
 //product schema middleware
+//MUST COME LAST AFTER OTHER MIDDLEWARE
 app.use('/products', productController)
