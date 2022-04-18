@@ -1,4 +1,5 @@
 const express = require('express')
+const Book = require('../../booklist/models/book')
 
 //variable of the .Router() method
 //dont forget to module.exports at the bottom to this var
@@ -6,10 +7,9 @@ const productRouter = express.Router()
 
 //require mongoose product schema
 const Product = require("../models/product")
-const seed = require("../models/productseed")
 
-//seed data if you have it
-const seed = require("./models/seedfile")
+//seed data
+const seed = require("../models/productseed")
 
 // INDUCES - Index, New, Delete, Update, Create, Edit, Show
 //seed if you have it
@@ -26,8 +26,20 @@ productRouter.get("/seed", (req, res) => {
   })
 
 //create route
+productRouter.post("/", (req,res) => {
+    Product.create(req.body, (err, createdProduct) => {
+        if (err) return res.send(err)
+        //res.send(createdProduct)
+        res.redirect("/books")
+    })
+})
 
 //delete route
+productRouter.delete("/:id", (req,res) => {
+    Book.findByIdAndDelete(req.params.id, (error, data) => {
+        res.redirect("/products")
+    })
+})
 
 //new route
 
