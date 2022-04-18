@@ -30,23 +30,33 @@ productRouter.post("/", (req,res) => {
     Product.create(req.body, (err, createdProduct) => {
         if (err) return res.send(err)
         //res.send(createdProduct)
-        res.redirect("/books")
+        res.redirect("/products")
     })
 })
 
 //delete route
 productRouter.delete("/:id", (req,res) => {
-    Book.findByIdAndDelete(req.params.id, (error, data) => {
+    Product.findByIdAndDelete(req.params.id, (error, data) => {
         res.redirect("/products")
     })
 })
 
 //new route
 
-//index route
 
+
+//index route
+productRouter.get("/", (req, res) => {
+    Product.find({}, (error, allProducts) => {
+      res.render("index.ejs", {
+        products: allProducts,
+      })
+    })
+  })
 
 //show route
+
+
 
 //export
 module.exports = productRouter
