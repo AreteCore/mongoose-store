@@ -60,6 +60,15 @@ productRouter.get("/", (req, res) => {
     })
   })
 
+//edit route
+productRouter.get("products/:id/edit", (req,res) => {
+  Product.findById(req.params.id), (err, foundProduct) => {
+    res.render("edit.ejs", {
+      product: foundProduct
+    })
+  }
+})
+
 //show route
 productRouter.get("/:id", (req,res) => {
   Product.findById(req.params.id, (err, foundProduct) => {
