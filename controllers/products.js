@@ -45,7 +45,7 @@ productRouter.delete("/:id", (req,res) => {
 //new route (must be before show route)
 productRouter.get("/new", (req,res) => {
   res.render("new.ejs", {
-    nothinghere: "yet?"
+    pageTitle: "Create New Product"
   })
 })
 
@@ -55,6 +55,7 @@ productRouter.get("/new", (req,res) => {
 productRouter.get("/", (req, res) => {
     Product.find({}, (error, allProducts) => {
       res.render("index.ejs", {
+        pageTitle: "Our Product Line",
         products: allProducts,
       })
     })
@@ -65,6 +66,7 @@ productRouter.get("/:id/edit", (req,res) => {
   Product.findById(req.params.id, (err, foundProduct) => {
     // res.send(foundProduct)
     res.render("edit.ejs", {
+      pageTitle: "Edit Product: " + foundProduct.name,
       product: foundProduct
     })
   })
@@ -74,6 +76,7 @@ productRouter.get("/:id/edit", (req,res) => {
 productRouter.get("/:id", (req,res) => {
   Product.findById(req.params.id, (err, foundProduct) => {
     res.render("show.ejs", {
+      pageTitle: foundProduct.name,
       product: foundProduct
     })
   })

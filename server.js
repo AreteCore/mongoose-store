@@ -33,6 +33,9 @@ db.on("disconnected", () => console.log("mongo disconnected"))
 app.use(express.urlencoded({extended:true}))
 //methodoverride, enables update and edit routes
 app.use(methodOverride("_method"))
-//product schema middleware
+//enables use of static folder for app.js and style.css
+app.use("/static", express.static("public"));
+//product schema middleware?
+
 //MUST COME LAST AFTER OTHER MIDDLEWARE
 app.use('/products', productController)
