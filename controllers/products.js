@@ -46,6 +46,7 @@ productRouter.delete("/:id", (req,res) => {
 
 
 //index route
+// displays at /products
 productRouter.get("/", (req, res) => {
     Product.find({}, (error, allProducts) => {
       res.render("index.ejs", {
