@@ -41,8 +41,13 @@ productRouter.delete("/:id", (req,res) => {
     })
 })
 
-//new route
-
+//------------- controllers (routes) ------------------
+//new route (must be before show route)
+productRouter.get("/new", (req,res) => {
+  res.render("new.ejs", {
+    nothinghere: "yet?"
+  })
+})
 
 
 //index route
