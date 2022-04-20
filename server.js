@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const methodOverride = require('method-override')
+const morgan = require("morgan")
 const app = express()
 
 //product schema
@@ -29,6 +30,7 @@ db.on("connected", () => console.log("mongo connected"))
 db.on("disconnected", () => console.log("mongo disconnected"))
 
 //middleware
+app.use(morgan('tiny'));
 //body parser middleware, gives us access to req.body
 app.use(express.urlencoded({extended:true}))
 //methodoverride, enables update and edit routes

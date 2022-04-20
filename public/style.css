@@ -1,5 +1,4 @@
 
-
-div:before {
-    content: "CSS IS WORKING"
+:root {
+    font-size: 12px;
 }
