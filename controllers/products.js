@@ -72,7 +72,18 @@ productRouter.get("/:id/edit", (req,res) => {
   })
 })
 
-//show route
+//thank you route
+productRouter.get("/:id/thankyou", (req,res) => {
+  Product.findById(req.params.id, (err, foundProduct) => {
+    // res.send(foundProduct)
+    res.render("thankyou.ejs", {
+      pageTitle: "Thanks for purchasing " + foundProduct.name,
+      product: foundProduct
+    })
+  })
+})
+
+//show/buy route
 productRouter.get("/:id", (req,res) => {
   Product.findById(req.params.id, (err, foundProduct) => {
     res.render("show.ejs", {
@@ -80,6 +91,38 @@ productRouter.get("/:id", (req,res) => {
       product: foundProduct
     })
   })
+})
+
+//commit edit
+productRouter.put('/:id', (req,res) => {
+  Product.findByIdAndUpdate(req.params.id, req.body, (err, updatedProduct) => {
+    res.redirect(`/products/${req.params.id}`)
+  })
+})
+
+//commit buy
+productRouter.put('/:id/purchase', (req,res) => {
+  //parse the amount requested
+  let purchaseQty = parseInt(req.body.purchase)
+  console.log("quantity purch", purchaseQty)
+  //empty variable for available stock
+  let qtyAvailable = 0
+    //update variable with current stock for comparison
+    Product.findById(req.params.id, async (err, foundProduct) => {
+        qtyAvailable = await parseInt(foundProduct.qty)
+        //make sure we have enough
+      if (qtyAvailable < purchaseQty) {
+        res.redirect(`/products/${req.params.id}`)
+      } else {
+        //finish transaction
+        // let updatedQty = { qty: qtyAvailable - purchaseQty }
+        Product.findByIdAndUpdate(req.params.id, { qty: qtyAvailable - purchaseQty }, async (err, updatedProduct) => {
+          // res.send(updatedProduct)
+          res.redirect(`/products/${req.params.id}/thankyou`)
+        })
+      }
+      })
+  
 })
 
 

@@ -2,8 +2,19 @@
 <html lang="en">
     <%- include("partials/head.ejs") %>
 
-<body>
-    <div>This is your product on the edit page</div><br>
+<body style="width: 40vw;">
+    <div>Edit product</div><br>
     <%= product %>
+    <form action="/products/<%=product._id%>?_method=PUT" method="post">
+        Name: <input type="text" name="name" value="<%=product.name%>"> <br>
+        Price: <input type="text" name="author" value="<%=product.price%>"> <br>
+        Quantity: <input type="number" name="qty" value="<%= product.qty %>">
+        <div>
+            Current Image:
+            <img src="<%= product.img %>" alt="" srcset="">
+        </div>
+        New Image Url: <input type="text" name="img" id="" value="<%= product.img %>">
+        <input type="submit" value="Update Product">
+    </form>
 </body>
 </html>

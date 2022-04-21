@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("partials/head.ejs") %>
+
+<body>
+    <div>Thank you for purchasing!</div>
+    <%#= product %>
+    <div>
+        <img src="<%= product.img %>" alt="" srcset="">
+        <div><%= product.name %></div>
+        <div>$<%=product.price%></div>
+        <div>Now in stock: <%= product.qty %></div>
+        <h4>You order will be delivered soon!</h4>
+        <a href="/products">Back to main page</a>
+    </div>
+</body>
+</html>
