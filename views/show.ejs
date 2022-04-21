@@ -11,10 +11,14 @@
         <div><%= product.name %></div>
         <div>$<%=product.price%></div>
         <div>Quantity Available: <%= product.qty %></div>
-        <form action="/products/<%=product._id%>/purchase?_method=PUT" method="post">
-            Quantity to purchase: <input type="number" name="purchase" value="1" min="1">
-            <input type="submit" value="Buy now">
-        </form>
+        <% if (product.qty > 0) { %>
+            <form action="/products/<%=product._id%>/purchase?_method=PUT" method="post">
+                Quantity to purchase: <input type="number" name="purchase" value="1" min="1" max="<%= product.qty %>">
+                <input type="submit" value="Buy now">
+            </form>
+        <%} else  { %>
+            <button disabled>Out of Stock</button>
+            <% } %>
     </div>
 </body>
 </html>
