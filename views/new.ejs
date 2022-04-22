@@ -5,12 +5,11 @@
     <body style="width: 40vw;">
         <div>New product</div><br>
         <form action="/products" method="post">
-            Name: <input type="text" name="name" placeholder="Add a name"> <br>
-            description
-            Price: <input type="text" name="price" placeholder="Price"> <br>
-            Quantity: <input type="number" name="qty" placeholder="Quantity in stock">
+            Name: <input type="text" name="name" placeholder="Add a name" required> <br>
+            Price: <input type="text" name="price" placeholder="Price" required> <br>
+            Quantity: <input type="number" name="qty" placeholder="Quantity in stock" required>
             Description: <input type="text" name="description" placeholder="Description" >
-            Image Url: <input type="text" name="img" id="" placeholder="https://site.com/image.jpg">
+            Image Url: <input type="text" name="img" id="" placeholder="https://site.com/image.jpg" required>
             <input type="submit" value="Create Product">
         </form>
         <a href="/products">Back to main page</a>

@@ -3,8 +3,11 @@
 <%- include("partials/head.ejs") %>
 
     <body >
-        <div>Here goes the index page!</div>
-        <a href="/products/seed">SEED</a> // <a href="/products/new">CREATE NEW</a>
+        <div class="title">
+            <h2>INTERNET BAZAAR EMPORIUM!</h2>
+            <div>You can buy a bunch of random things.</div>
+            <div><a href="/products/seed">SEED</a> // <a href="/products/new">CREATE NEW</a></div>
+        </div>
         <%#= products %>
             <div class="main">
                 <% for (let product of products) { %>

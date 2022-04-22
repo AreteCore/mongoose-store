@@ -4,14 +4,30 @@
 }
 
 body {
-    background: rgb(2,0,36);
-background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 9%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 9%, rgba(0,212,255,1) 100%);
 }
 
+.title {
+    display:flex;
+    flex-flow:column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    background-color:rgb(0, 0, 51);
+    width: 100vw;
+    height: 10em;
+    margin-bottom: 10px;
+    border-bottom: .5px solid white;
+}
+
+.title h2 {
+    margin: 0
+}
 .main {
     display: flex;
     flex-flow: row wrap;
     gap: 10px;
+    padding-left: 10px;
 }
 
 .item-frame {
@@ -21,9 +37,9 @@ background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 9%, rgba(
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    background-color: rgba(27, 27, 27, 0.55);
+    background-color: rgba(27, 27, 27, 0.75);
     border-radius: 5px;
-    padding: 10px
+    padding: 10px;
 }
 
 img {
