@@ -15,7 +15,7 @@
   },
   "name": "mongoose-store",
   "version": "1.0.0",
-  "description": "This is a storefront built with Node, Mongoose, MongoDB, Express, EJS",
+  "description": "A simple store built with Node, Mongoose, MongoDB, Express, EJS",
   "main": "server.js",
   "repository": {
     "type": "git",
