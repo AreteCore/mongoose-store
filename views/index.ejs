@@ -2,12 +2,13 @@
 <html lang="en">
 <%- include("partials/head.ejs") %>
 
-    <body style="width: 50vw;">
+    <body >
         <div>Here goes the index page!</div>
+        <a href="/products/seed">SEED</a> // <a href="/products/new">CREATE NEW</a>
         <%#= products %>
-            <ul>
+            <div class="main">
                 <% for (let product of products) { %>
-                    <li>
+                    <div class="item-frame">
                         <a href="/products/<%= product._id %>">
                             <div>
                                 <img src="<%= product.img %>" alt="" srcset="">
@@ -15,9 +16,9 @@
                                 <div>$<%=product.price%></div>
                             </div>
                         </a>
-                </li>
+                </div>
                 <% } %>
-            </ul>
+            </div>
     </body>
 
 </html>

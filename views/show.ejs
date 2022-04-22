@@ -4,12 +4,15 @@
 <%- include("partials/head.ejs") %>
 
 <body style="width: 50vw;">
-    <div>This is your product:</div>
+    <!-- <div>This is your product:</div> -->
     <%#= product %>
-    <div>
+    <div class="show">
         <img src="<%= product.img %>" alt="" srcset="">
-        <div><%= product.name %></div>
-        <div>$<%=product.price%></div>
+        <div><h4 style="display: inline;"><%= product.name %></h4>
+            (<a href="./<%=product._id%>/edit">Edit this item</a>)
+        </div>
+        <div>$<%= product.price %></div>
+        <div>Description: <%= product.description %></div>
         <div>Quantity Available: <%= product.qty %></div>
         <% if (product.qty > 0) { %>
             <form action="/products/<%=product._id%>/purchase?_method=PUT" method="post">
@@ -20,5 +23,7 @@
             <button disabled>Out of Stock</button>
             <% } %>
     </div>
+    <a href="/products">Back to main page</a>
+
 </body>
 </html>

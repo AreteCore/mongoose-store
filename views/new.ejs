@@ -2,9 +2,18 @@
 <html lang="en">
     <%- include("partials/head.ejs") %>
 
-<body>
-    <div>lets create a product</div>
-    <div>there will be a form here eventually</div>
-    <div>elements of the object are name, description, img (a url), price, qty</div>
-</body>
+    <body style="width: 40vw;">
+        <div>New product</div><br>
+        <form action="/products" method="post">
+            Name: <input type="text" name="name" placeholder="Add a name"> <br>
+            description
+            Price: <input type="text" name="price" placeholder="Price"> <br>
+            Quantity: <input type="number" name="qty" placeholder="Quantity in stock">
+            Description: <input type="text" name="description" placeholder="Description" >
+            Image Url: <input type="text" name="img" id="" placeholder="https://site.com/image.jpg">
+            <input type="submit" value="Create Product">
+        </form>
+        <a href="/products">Back to main page</a>
+
+    </body>
 </html>
